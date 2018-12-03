@@ -1,8 +1,8 @@
 defmodule AdventOfCode.ChronalCalibration do
   @input_file Application.app_dir(:advent_of_code, "priv/day_1.txt")
 
-  def part1, do: frequency(parse_adjustments())
-  def part2, do: repeated_frequency(parse_adjustments())
+  def part1, do: {"What is the resulting frequency?", frequency(parse_adjustments())}
+  def part2, do: {"What is the first frequency your device reaches twice?", repeated_frequency(parse_adjustments())}
 
   @doc """
   Given a starting frequency, applies an array of integer adjustments
@@ -43,7 +43,7 @@ defmodule AdventOfCode.ChronalCalibration do
       14
   """
   def repeated_frequency(starting \\ 0, adjustments) do
-    Stream.concat([0], Stream.cycle(adjustments))
+    Stream.concat([starting], Stream.cycle(adjustments))
     |> Stream.scan(0, &(&1 + &2))
     # at this point we have a sequence of frequency values and need to find
     # the first repeated one
