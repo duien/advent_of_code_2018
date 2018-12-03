@@ -43,11 +43,9 @@ defmodule AdventOfCode.ChronalCalibration do
       14
   """
   def repeated_frequency(starting \\ 0, adjustments) do
-    repeated_adjustments = Stream.cycle(adjustments)
-
-    Stream.concat([0], repeated_adjustments)
+    Stream.concat([0], Stream.cycle(adjustments))
     |> Stream.scan(0, &(&1 + &2))
-    # at this point we have a sequency of frequency values and need to find
+    # at this point we have a sequence of frequency values and need to find
     # the first repeated one
     |>Enum.reduce_while(MapSet.new(), fn freq, acc ->
       if MapSet.member?(acc, freq) do
