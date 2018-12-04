@@ -3,7 +3,8 @@ defmodule Mix.Tasks.Day do
   @shortdoc "Run advent of code for day n"
   @days %{
     1 => AdventOfCode.ChronalCalibration,
-    2 => AdventOfCode.InventoryManagementSystem
+    2 => AdventOfCode.InventoryManagementSystem,
+    3 => AdventOfCode.FabricSlicer
   }
 
   def run([day]) do
@@ -24,7 +25,7 @@ defmodule Mix.Tasks.Day do
     end
   end
   #
-  # 
+  #
   #
   #
   #   case Integer.parse(day) do
