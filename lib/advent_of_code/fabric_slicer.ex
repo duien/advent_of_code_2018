@@ -1,8 +1,10 @@
 defmodule AdventOfCode.FabricSlicer do
   @input_file Application.app_dir(:advent_of_code, "priv/day_3.txt")
 
-  def part1, do: {"How many square inches of fabric are within two or more claims?", claim_overlapping_area()}
-  def part2, do: {"What is the ID of the only claim that doesn't overlap?", workable_claim()}
+  @part1 "How many square inches of fabric are within two or more claims?"
+  @part2 "What is the ID of the only claim that doesn't overlap?"
+  def part1, do: {@part1, &claim_overlapping_area/0}
+  def part2, do: {@part2, &workable_claim/0}
 
   defmodule Claim, do: defstruct [:id, :left, :top, :width, :height]
 

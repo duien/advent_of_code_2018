@@ -1,8 +1,10 @@
 defmodule AdventOfCode.ChronalCalibration do
   @input_file Application.app_dir(:advent_of_code, "priv/day_1.txt")
 
-  def part1, do: {"What is the resulting frequency?", frequency(parse_adjustments())}
-  def part2, do: {"What is the first frequency your device reaches twice?", repeated_frequency(parse_adjustments())}
+  @part1 "What is the resulting frequency?"
+  @part2 "What is the first frequency your device reaches twice?"
+  def part1, do: {@part1, fn -> frequency parse_adjustments() end }
+  def part2, do: {@part2, fn -> repeated_frequency parse_adjustments() end}
 
   @doc """
   Given a starting frequency, applies an array of integer adjustments

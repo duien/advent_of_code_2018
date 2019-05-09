@@ -1,8 +1,10 @@
 defmodule AdventOfCode.ReposeRecord do
   @input_file Application.app_dir(:advent_of_code, "priv/day_4.txt")
 
-  def part1, do: {"Find the guard that has the most minutes asleep. What minute does that guard spend asleep the most? What is the ID of the guard you chose multiplied by the minute you chose?", likely_sleeping()}
-  def part2, do: {"Of all guards, which guard is most frequently asleep on the same minute? What is the ID of the guard you chose multiplied by the minute you chose?", sleepiest_minute()}
+  @part1 "Find the guard that has the most minutes asleep. What minute does that guard spend asleep the most? What is the ID of the guard you chose multiplied by the minute you chose?"
+  @part2 "Of all guards, which guard is most frequently asleep on the same minute? What is the ID of the guard you chose multiplied by the minute you chose?"
+  def part1, do: {@part1, &likely_sleeping/0}
+  def part2, do: {@part2, &sleepiest_minute/0}
 
   # Strategy 1: Find the guard that has the most minutes asleep. What minute
   # does that guard spend asleep the most?

@@ -1,46 +1,32 @@
 defmodule Mix.Tasks.Day do
   use Mix.Task
-  @shortdoc "Run advent of code for day n"
-  @days %{
-    1 => AdventOfCode.ChronalCalibration,
-    2 => AdventOfCode.InventoryManagementSystem,
-    3 => AdventOfCode.FabricSlicer
-  }
+  @shortdoc "Run advent of code for day n [part n]"
 
-  def run([day]) do
-    with { day, _ } <- Integer.parse(day),
-      mod <- Map.get(@days, day),
-      {message_1, result_1} <- mod.part1(),
-      {message_2, result_2} <- mod.part2()
-      do
-        Mix.shell.info """
-          AdventOfCode -- #{to_string mod}
-
-          Part 1: #{message_1}
-          Answer: #{result_1}
-
-          Part 2: #{message_2}
-          Answer: #{result_2}
-          """
+  def run([day, part]) do
+    Mix.Task.run("compile")
+    Mix.shell.info "\n#{IO.ANSI.reverse} Day #{day} - Part #{part} #{IO.ANSI.reverse_off}"
+    try do
+      with {day, "" } <- Integer.parse(day),
+        { part, "" } <- Integer.parse(part),
+        module <- AdventOfCode.day(day),
+        func <- :"part#{part}",
+      do: print_result apply(module, func, [])
+    rescue e -> Mix.shell.error Exception.format(:error, e)
     end
   end
-  #
-  #
-  #
-  #
-  #   case Integer.parse(day) do
-  #     {1,_} ->
-  #       Mix.shell.info "## Advent of Code :: Chronal Calibration"
-  #       Mix.shell.info "\nWhat is the resulting frequency?"
-  #       Mix.shell.info inspect(AdventOfCode.ChronalCalibration.part1())
-  #       Mix.shell.info "\nWhat is the first frequency your device reaches twice?"
-  #       Mix.shell.info inspect(AdventOfCode.ChronalCalibration.part2())
-  #     _ ->
-  #       Mix.shell.info "Nope"
-  #   end
-  # end
 
-  def run(_) do
-    Mix.shell.info "Nope"
+  def run([day]) do
+    run([day, "1"])
+    run([day, "2"])
+  end
+
+  def run(args) do
+    Mix.raise "Nope"
+    Mix.shell.debug args
+  end
+
+  defp print_result({message, result}) do
+    Mix.shell.info "#{IO.ANSI.italic}#{message}#{IO.ANSI.reset}"
+    Mix.shell.info "\nAnswer: #{IO.ANSI.bright}#{result.()}#{IO.ANSI.reset}"
   end
 end

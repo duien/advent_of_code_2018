@@ -1,8 +1,10 @@
 defmodule AdventOfCode.InventoryManagementSystem do
   @input_file Application.app_dir(:advent_of_code, "priv/day_2.txt")
 
-  def part1, do: {"What is the checksum?", checksum()}
-  def part2, do: {"What letters are common between the two correct box IDs?", prototype_boxes()}
+  @part1 "What is the checksum?"
+  @part2 "What letters are common between the two correct box IDs?"
+  def part1, do: {@part1, &checksum/0}
+  def part2, do: {@part2, &prototype_boxes/0}
 
   @doc """
   Examples

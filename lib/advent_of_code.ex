@@ -1,18 +1,16 @@
 defmodule AdventOfCode do
-  @moduledoc """
-  Documentation for AdventOfCode.
-  """
+
+  @days %{
+    1 => AdventOfCode.ChronalCalibration,
+    2 => AdventOfCode.InventoryManagementSystem,
+    3 => AdventOfCode.FabricSlicer,
+    4 => AdventOfCode.ReposeRecord
+  }
 
   @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> AdventOfCode.hello()
-      :world
-
+  Returns the module for the given day number
   """
-  def hello do
-    :world
+  def day(n) do
+    Map.get(@days, n)
   end
 end
