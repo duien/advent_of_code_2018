@@ -13,4 +13,9 @@ defmodule AdventOfCode do
   def day(n) do
     Map.get(@days, n)
   end
+
+  def days do
+    @days
+    |> Map.values
+  end
 end
