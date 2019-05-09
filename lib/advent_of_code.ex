@@ -4,7 +4,8 @@ defmodule AdventOfCode do
     1 => AdventOfCode.ChronalCalibration,
     2 => AdventOfCode.InventoryManagementSystem,
     3 => AdventOfCode.FabricSlicer,
-    4 => AdventOfCode.ReposeRecord
+    4 => AdventOfCode.ReposeRecord,
+    5 => AdventOfCode.AlchemicalReduction
   }
 
   @doc """
