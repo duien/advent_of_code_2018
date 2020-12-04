@@ -20,8 +20,8 @@ defmodule AdventOfCode.ReposeRecord do
     |> Enum.group_by(&(&1))
     |> Enum.max_by(fn {_, m} -> Enum.count(m) end)
 
-    IO.inspect(guard, label: "guard")
-    IO.inspect(minute, label: "minute")
+    # IO.inspect(guard, label: "guard")
+    # IO.inspect(minute, label: "minute")
     guard * minute
   end
 
@@ -38,8 +38,8 @@ defmodule AdventOfCode.ReposeRecord do
     |> Enum.max_by(fn {_, m} -> Enum.count(m) end)
 
 
-    IO.inspect(guard, label: "guard")
-    IO.inspect(minute, label: "minute")
+    # IO.inspect(guard, label: "guard")
+    # IO.inspect(minute, label: "minute")
     guard * minute
   end
 

@@ -35,12 +35,12 @@ defmodule AdventOfCode.AlchemicalReduction do
       |> remove_unit(letter)
       |> react
       |> String.length
-      |> IO.inspect(label: letter)
+      # |> IO.inspect(label: letter)
 
       {letter, length}
     end)
     |> Enum.min_by(fn {_,l} -> l end)
-    |> IO.inspect
+    # |> IO.inspect
 
     length
   end

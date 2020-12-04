@@ -5,7 +5,8 @@ defmodule AdventOfCode do
     2 => AdventOfCode.InventoryManagementSystem,
     3 => AdventOfCode.FabricSlicer,
     4 => AdventOfCode.ReposeRecord,
-    5 => AdventOfCode.AlchemicalReduction
+    5 => AdventOfCode.AlchemicalReduction,
+    6 => AdventOfCode.ChronalCoordinates
   }
 
   @doc """
